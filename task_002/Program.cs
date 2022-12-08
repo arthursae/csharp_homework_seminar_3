@@ -7,7 +7,7 @@ int[] aPoint = new int[3];
 int[] bPoint = new int[3];
 string[] axisNames = new string[] {"X","Y","Z"};
 
-int[] CollectUserData(string pointName) {
+int[] CollectUserDataForPoint(string pointName) {
 
     int[] point = new int[3];
     
@@ -42,8 +42,8 @@ double GetDistanceBetweenTwoPoints(int[] firstPoint, int[] secondPoint) {
 
 Console.Clear();
 
-aPoint = CollectUserData("A");
-bPoint = CollectUserData("B");
+aPoint = CollectUserDataForPoint("A");
+bPoint = CollectUserDataForPoint("B");
 double distance = GetDistanceBetweenTwoPoints(aPoint, bPoint);
 string distanceTruncated = distance.ToString("0.00"); // round off to two decimal places
 Console.WriteLine("Расстояние между точками А и B равно = " + distanceTruncated);
