@@ -30,7 +30,7 @@ int PowInt(int num, int pow) {
 
         while (i < pow) {
 
-            num = num * storedNum;
+            num *= storedNum;
             i++;
 
         }
