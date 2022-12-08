@@ -40,7 +40,7 @@ bool IsPalindrome(string stringToCheck) {
         if (stringToCheck[i] != stringToCheck[length - 1 - i]) {
         
             return false;
-            break; // if the first occurance is found when there is no need to check it further
+            break; // if the first occurance is found then there is no need to check it further
 
         }
         
