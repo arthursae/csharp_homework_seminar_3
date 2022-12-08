@@ -3,33 +3,47 @@
 // A (3,6,8); B (2,1,-7), -> 15.84
 // A (7,-5, 0); B (1,-1,9) -> 11.53
 
-int CollectUserData(string message) {
+int[] aPoint = new int[3];
+int[] bPoint = new int[3];
+string[] axisNames = new string[] {"X","Y","Z"};
 
-    Console.Write(message);
-    int result = int.Parse(Console.ReadLine());
-    return result;
+int[] CollectUserData(string pointName) {
+
+    int[] point = new int[3];
+    
+    for (int i = 0; i < 3; i++) {
+
+        Console.Write("Введите " + axisNames[i] + "-координату точки " + pointName + ": ");
+        int result = int.Parse(Console.ReadLine());
+        point[i] = result;
+
+    }
+    
+    return point;
     
 }
 
-double GetDistanceBetweenTwoPoints() {
-    
-    int aX = CollectUserData("Введите X-координату точки А: ");
-    int aY = CollectUserData("Введите Y-координату точки А: ");
-    int aZ = CollectUserData("Введите Z-координату точки А: ");
-    
-    int bX = CollectUserData("Введите X-координату точки B: ");
-    int bY = CollectUserData("Введите Y-координату точки B: ");
-    int bZ = CollectUserData("Введите Z-координату точки B: ");
+double GetDistanceBetweenTwoPoints(int[] firstPoint, int[] secondPoint) {
 
-    double dist = Math.Sqrt(Math.Pow(aX - bX, 2) + Math.Pow(aY - bY, 2) + Math.Pow(aZ - bZ, 2));
+    double sum = 0;
+    double subCalc = 0;
+
+    for (int i = 0; i < 3; i++) {
+
+        subCalc = Math.Pow(firstPoint[i] - secondPoint[i], 2);
+        sum += subCalc;
     
+    }
+
+    double dist = Math.Sqrt(sum);
     return dist;
-    
+
 }
 
 Console.Clear();
 
-double distance = GetDistanceBetweenTwoPoints();
+aPoint = CollectUserData("A");
+bPoint = CollectUserData("B");
+double distance = GetDistanceBetweenTwoPoints(aPoint, bPoint);
 string distanceTruncated = distance.ToString("0.00"); // round off to two decimal places
-
 Console.WriteLine("Расстояние между точками А и B равно = " + distanceTruncated);
